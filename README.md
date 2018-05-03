@@ -32,7 +32,7 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
   - No Jobs as of now
 
-* Deployment instructions
-  - `cap staging deploy`
-  - `RAILS_ENV=production rails assets:clean`
-  - `RAILS_ENV=production rails assets:precompile`
+* API Documentation
+  - `curl -X POST -d "url[original_url]=google.com" "localhost:3000/api/v1/urls.json"`
+  - {"url":{"original_url":"github.com","shortened_url":"http://localhost:3000/bVhDaS","created_at":"2018-05-03T09:31:08.000Z"}
+

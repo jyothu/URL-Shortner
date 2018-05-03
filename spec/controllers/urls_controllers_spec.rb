@@ -18,6 +18,11 @@ RSpec.describe UrlsController do
       get :index
       expect(response).to render_template :index
     end
+
+    it "should paginate urls" do
+      get :index
+      allow(Url).to receive(:page)
+    end
   end
 
   describe "GET #new" do

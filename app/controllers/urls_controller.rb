@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
   before_action :set_url, only: [:show]
 
   def index
-    @urls = Url.all
+    @urls = Url.page(params[:page])
   end
 
   def new

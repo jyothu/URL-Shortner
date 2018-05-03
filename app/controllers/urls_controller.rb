@@ -41,6 +41,6 @@ class UrlsController < ApplicationController
   end
 
   def url_params
-    params.require(:url).permit(:original_url)
+    params.require(:url).permit(:original_url, :customized_url)
   end
 end

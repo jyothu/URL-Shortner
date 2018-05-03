@@ -15,15 +15,16 @@ class Urls::Decorator
   end
 
   def add_fields
+    url.customized_url ||= customized_url
     url.shortened = shortened
     url.shortened_url = shortened_url
   end
 
   def customized_url
     url.original_url.strip!
-    customized_url = url.original_url.downcase.gsub(/(https?:\/\/)|(www\.)/, "")
-    customized_url.slice!(-1) if customized_url[-1] == "/"
-    "http://#{customized_url}"
+    curl = url.original_url.downcase.gsub(/(https?:\/\/)|(www\.)/, "")
+    curl.slice!(-1) if curl[-1] == "/"
+    "http://#{curl}"
   end
 
   def shortened

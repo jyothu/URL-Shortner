@@ -33,6 +33,6 @@ Things you may want to cover:
   - No Jobs as of now
 
 * API Documentation
-  - `curl -X POST -d "url[original_url]=google.com" "localhost:3000/api/v1/urls.json"`
+  - `curl -X POST -d "url[original_url]=github.com" "localhost:3000/api/v1/urls.json"`
   - {"url":{"original_url":"github.com","shortened_url":"http://localhost:3000/bVhDaS","created_at":"2018-05-03T09:31:08.000Z"}
 

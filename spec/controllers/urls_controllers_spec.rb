@@ -64,6 +64,12 @@ RSpec.describe UrlsController do
       d.save
     end
 
+    it "enters request details to AuditLog" do
+      expect{
+        get :shortened, params: { shortened: @url.shortened }
+      }.to change(AuditLog, :count).by(1)
+    end
+
     it "redirects to the shortened url" do
       get :shortened, params: { shortened: @url.shortened }
       expect(response).to redirect_to(@url.customized_url)

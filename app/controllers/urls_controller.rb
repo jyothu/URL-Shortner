@@ -13,6 +13,7 @@ class UrlsController < ApplicationController
 
   def shortened
     @url = Url.find_by(shortened: params[:shortened])
+    audit_log if @url.present?
     redirect_to @url.customized_url
   end
 
@@ -42,5 +43,19 @@ class UrlsController < ApplicationController
 
   def url_params
     params.require(:url).permit(:original_url, :customized_url)
+  end
+
+  def audit_log
+    args = {
+      remote_addr: request.remote_addr,
+      remote_host: request.remote_host,
+      remote_ip: request.remote_ip,
+      remote_user: request.remote_user,
+      user_agent: request.user_agent,
+      uuid: request.uuid,
+      client_ip: request.client_ip
+    }
+
+    @url.audit_logs.create(request_details: args)
   end
 end
